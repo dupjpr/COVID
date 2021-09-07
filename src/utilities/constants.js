@@ -1,10 +1,12 @@
 const LOADING = 'LOADING';
 const GET_PROFILE = 'GET_PROFILE';
 const ERROR = 'ERROR';
+const OPTION_PICK = 'OPTION_PICK'
 
 export { 
   LOADING, 
   GET_PROFILE, 
-  ERROR
+  ERROR,
+  OPTION_PICK
  };
  

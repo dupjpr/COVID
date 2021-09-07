@@ -6,7 +6,7 @@ const initialState = {
   loading: true,
   data: '',
   dataChart: '',
-  optionsSelect: { selectOne: [], selectTwo: [] },
+  optionPick: { selectOne: 'All states', selectTwo: 'All time' },
   statesEEUU: {
     AL: 'Alabama',
     AK: 'Alaska',

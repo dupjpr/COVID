@@ -1,7 +1,8 @@
 import {
   LOADING,
   GET_PROFILE,
-  ERROR
+  ERROR,
+  OPTION_PICK
 } from '../../utilities/constants';
 
 const rootReducer = (state, action) => {
@@ -21,6 +22,11 @@ const rootReducer = (state, action) => {
       return {
         ...state,
         error: action.payload
+      }
+    case OPTION_PICK:
+      return {
+        ...state,
+        optionPick: { ...state.optionPick, ...action.payload }
       }
     default:
       return state
