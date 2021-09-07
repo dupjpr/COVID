@@ -7,8 +7,11 @@ import Chart from "./Chart/Chart";
 import Overview from "./Overview/Overview";
 
 const DefaultComponent = () => {
+
   const storeData = useSelector(state => state);
   const dispatch = useDispatch();
+
+  const { loading, data } = storeData;
 
   useEffect(() => {
     dispatch(axiosActions());
@@ -18,9 +21,12 @@ const DefaultComponent = () => {
   return (
     <section className='sectionHome-container'>
       <h1>COVID US</h1>
-      <Overview />
-      <Filter />
-      <Chart />
+
+      {loading && 'loading...'}
+      {data && <Overview />}
+      {data && <Filter />}
+      {data && <Chart />}
+
     </section>
   );
 }
