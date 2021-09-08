@@ -32,7 +32,7 @@ const Filter = () => {
 
   // date config
 
-  function dateFormat (dates){
+  function dateFormat(dates) {
 
     const newDate = dates.map((item) => {
 
@@ -56,6 +56,17 @@ const Filter = () => {
 
   useEffect(() => {
 
+    if (optionPick.selectOne === 'All states' && optionPick.selectTwo !== 'All time') {
+
+      const valuesChart = dataProcess.map((item) => item[0].positive);
+      const labelChart = states.map((item) => statesEEUU[item]);
+
+      dispatch(dataChartAction({ labels: labelChart, values: valuesChart }));
+      dispatch(statusOption(true));
+      dispatch(formActions({ selectTwo: 'All time' }));
+
+    }
+
     if (optionPick.selectOne === 'All states' && optionPick.selectTwo === 'All time') {
 
       const valuesChart = dataProcess.map((item) => item[0].positive);
@@ -64,20 +75,48 @@ const Filter = () => {
       dispatch(dataChartAction({ labels: labelChart, values: valuesChart }));
       dispatch(statusOption(true));
 
-
     }
 
     if (optionPick.selectOne !== 'All states' && optionPick.selectTwo === 'All time') {
-      
+
       const stateIdx = Object.values(statesEEUU).indexOf(optionPick.selectOne);
       const initials = states[stateIdx];
 
-      const dataSet = dataProcess.filter((item)=> item[0].state === initials);
+      const dataSet = dataProcess.filter((item) => item[0].state === initials);
       const valuesChart = dataSet[0].map((item) => item.positive);
       const labelChart = dateFormat(dataSet[0].map((item) => item.date));
 
       dispatch(dataChartAction({ labels: labelChart, values: valuesChart }));
       dispatch(statusOption(false));
+
+    }
+
+    if (optionPick.selectOne !== 'All states' && optionPick.selectTwo !== 'All time') {
+
+      const stateIdx = Object.values(statesEEUU).indexOf(optionPick.selectOne);
+      const initials = states[stateIdx];
+
+      const dataSet = dataProcess.filter((item) => item[0].state === initials);
+
+      if (optionPick.selectTwo === "Last 7 days") {
+
+        const dataFilter = dataSet[0].filter((item, idx) => idx <= 6);
+        const valuesChart = dataFilter.map((item) => item.positive);
+        const labelChart = dateFormat(dataFilter.map((item) => item.date));
+
+        dispatch(dataChartAction({ labels: labelChart, values: valuesChart }));
+        dispatch(statusOption(false));
+
+      } else if (optionPick.selectTwo === "Last month") {
+
+        const dataFilter = dataSet[0].filter((item, idx) => idx <= 29);
+        const valuesChart = dataFilter.map((item) => item.positive);
+        const labelChart = dateFormat(dataFilter.map((item) => item.date));
+
+        dispatch(dataChartAction({ labels: labelChart, values: valuesChart }));
+        dispatch(statusOption(false));
+
+      }
 
     }
 
