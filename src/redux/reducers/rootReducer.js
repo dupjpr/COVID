@@ -2,7 +2,9 @@ import {
   LOADING,
   GET_PROFILE,
   ERROR,
-  OPTION_PICK
+  OPTION_PICK,
+  DATA_CHART,
+  STATUS_TIME_OPTIONS
 } from '../../utilities/constants';
 
 const rootReducer = (state, action) => {
@@ -27,6 +29,16 @@ const rootReducer = (state, action) => {
       return {
         ...state,
         optionPick: { ...state.optionPick, ...action.payload }
+      }
+    case DATA_CHART:
+      return {
+        ...state,
+        dataChart: action.payload
+      }
+    case STATUS_TIME_OPTIONS:
+      return {
+        ...state,
+        status: action.payload
       }
     default:
       return state
