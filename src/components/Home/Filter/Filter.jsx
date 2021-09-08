@@ -59,9 +59,15 @@ const Filter = () => {
     if (optionPick.selectOne === 'All states' && optionPick.selectTwo !== 'All time') {
 
       const valuesChart = dataProcess.map((item) => item[0].positive);
+      const valuesDeathsChart = dataProcess.map((item) => item[0].death);
       const labelChart = states.map((item) => statesEEUU[item]);
 
-      dispatch(dataChartAction({ labels: labelChart, values: valuesChart }));
+      dispatch(dataChartAction({
+        labels: labelChart,
+        values: valuesChart,
+        valuesDeath: valuesDeathsChart
+      }));
+
       dispatch(statusOption(true));
       dispatch(formActions({ selectTwo: 'All time' }));
 
@@ -70,9 +76,15 @@ const Filter = () => {
     if (optionPick.selectOne === 'All states' && optionPick.selectTwo === 'All time') {
 
       const valuesChart = dataProcess.map((item) => item[0].positive);
+      const valuesDeathsChart = dataProcess.map((item) => item[0].death);
       const labelChart = states.map((item) => statesEEUU[item]);
 
-      dispatch(dataChartAction({ labels: labelChart, values: valuesChart }));
+      dispatch(dataChartAction({
+        labels: labelChart,
+        values: valuesChart,
+        valuesDeath: valuesDeathsChart
+      }));
+
       dispatch(statusOption(true));
 
     }
@@ -84,9 +96,15 @@ const Filter = () => {
 
       const dataSet = dataProcess.filter((item) => item[0].state === initials);
       const valuesChart = dataSet[0].map((item) => item.positive);
+      const valuesDeathsChart = dataSet[0].map((item) => item.death);
       const labelChart = dateFormat(dataSet[0].map((item) => item.date));
 
-      dispatch(dataChartAction({ labels: labelChart, values: valuesChart }));
+      dispatch(dataChartAction({
+        labels: labelChart,
+        values: valuesChart,
+        valuesDeath: valuesDeathsChart
+      }));
+
       dispatch(statusOption(false));
 
     }
@@ -102,18 +120,30 @@ const Filter = () => {
 
         const dataFilter = dataSet[0].filter((item, idx) => idx <= 6);
         const valuesChart = dataFilter.map((item) => item.positive);
+        const valuesDeathsChart = dataFilter.map((item) => item.death);
         const labelChart = dateFormat(dataFilter.map((item) => item.date));
 
-        dispatch(dataChartAction({ labels: labelChart, values: valuesChart }));
+        dispatch(dataChartAction({
+          labels: labelChart,
+          values: valuesChart,
+          valuesDeath: valuesDeathsChart
+        }));
+
         dispatch(statusOption(false));
 
       } else if (optionPick.selectTwo === "Last month") {
 
         const dataFilter = dataSet[0].filter((item, idx) => idx <= 29);
         const valuesChart = dataFilter.map((item) => item.positive);
+        const valuesDeathsChart = dataFilter.map((item) => item.death);
         const labelChart = dateFormat(dataFilter.map((item) => item.date));
 
-        dispatch(dataChartAction({ labels: labelChart, values: valuesChart }));
+        dispatch(dataChartAction({
+          labels: labelChart,
+          values: valuesChart,
+          valuesDeath: valuesDeathsChart
+        }));
+        
         dispatch(statusOption(false));
 
       }

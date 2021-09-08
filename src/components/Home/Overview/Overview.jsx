@@ -1,9 +1,9 @@
 const Overview = () => {
-  return ( 
+  return (
     <div>
-      thi is the overview
+      <h2>General Information EEUU</h2>
     </div>
-   );
+  );
 }
- 
+
 export default Overview;

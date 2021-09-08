@@ -20,6 +20,7 @@ const DefaultComponent = () => {
 
   return (
     <section className='sectionHome-container'>
+      
       <h1>COVID US</h1>
 
       {loading && 'loading...'}
