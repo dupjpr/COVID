@@ -1,7 +1,7 @@
 import {
   OPTION_PICK,
   DATA_CHART,
-  STATUS_TIME_OPTIONS
+  STATUS_TIME_OPTIONS,
 } from '../../utilities/constants.js';
 
 const actions = {
@@ -17,7 +17,6 @@ const actions = {
     type: STATUS_TIME_OPTIONS,
     payload: data
   })
-
 }
 
 const { pickOption, dataChart, statusTime } = actions;

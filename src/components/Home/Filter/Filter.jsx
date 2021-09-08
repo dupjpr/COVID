@@ -143,7 +143,7 @@ const Filter = () => {
           values: valuesChart,
           valuesDeath: valuesDeathsChart
         }));
-        
+
         dispatch(statusOption(false));
 
       }
@@ -152,8 +152,6 @@ const Filter = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [optionPick])
-
-  console.log(storeData);
 
   return (
     <div>

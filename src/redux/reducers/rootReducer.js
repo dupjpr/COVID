@@ -4,7 +4,7 @@ import {
   ERROR,
   OPTION_PICK,
   DATA_CHART,
-  STATUS_TIME_OPTIONS
+  STATUS_TIME_OPTIONS, 
 } from '../../utilities/constants';
 
 const rootReducer = (state, action) => {

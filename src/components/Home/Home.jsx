@@ -21,7 +21,7 @@ const DefaultComponent = () => {
   return (
     <section className='sectionHome-container'>
       
-      <h1>COVID US</h1>
+      <h1>COVID EEUU</h1>
 
       {loading && 'loading...'}
       {data && <Overview />}
